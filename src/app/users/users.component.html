@@ -1,0 +1,15 @@
+<table>
+    <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td><button (click)="deleteUser(user.id)">Delete</button></td>
+    </tr>
+</table>
+<form (submit)="addUser(user)">
+    <div><input type="text" [(ngModel)]="user.name" name="name" placeholder="Name">
+        <input type="text" [(ngModel)]="user.username" name="username" placeholder="Username">
+        <input type="text" [(ngModel)]="user.email" name="email" placeholder="Email">
+        <button type="submit">Ajouter un utilisateur</button>
+    </div>
+</form>
