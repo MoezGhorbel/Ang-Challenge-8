@@ -10,6 +10,7 @@ import { Utilisateur } from '../Utilisateur';
 export class UsersComponent implements OnInit{
   public users!: Utilisateur[];
   public user: Utilisateur = new Utilisateur();
+  public updateCheck = false;
 
   constructor(private userService: UserServiceService) {}
 
@@ -29,4 +30,14 @@ export class UsersComponent implements OnInit{
     this.userService.addUser(user).subscribe(() => this.getUsers());
   }
 
+  updateUser(user: Utilisateur) {
+    this.userService.updateUser(user.id, user).subscribe(() => this.getUsers());
+    this.updateCheck = true;
+    this.user = user;
+  }
+
+  doneUpdate() {
+    this.updateUser(this.user);
+    this.updateCheck = false;
+  }
 }

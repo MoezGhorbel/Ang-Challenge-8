@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -30,8 +29,9 @@ export class UserServiceService {
     return this.HttpClient.post<Utilisateur>(this.usersUrl, user, httpOptions);
   }
 
-  updateUser(user: Utilisateur): Observable<Utilisateur> {
-    const url = "${this.usersUrl}/${user.id}";
+  updateUser(id: number, user: Utilisateur): Observable<Utilisateur> {
+    const url = `${this.usersUrl}/${id}`;
     return this.HttpClient.put<Utilisateur>(url, user, httpOptions);
   }
+  
 }
